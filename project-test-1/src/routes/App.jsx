@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import HomePage from '../pages/HomePage';
-import DetailToDo from '../pages/DetailToDo'
+import DetailToDo from '../pages/DetailToDo';
 
 function App() {
   return (
