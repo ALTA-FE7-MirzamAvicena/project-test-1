@@ -50,8 +50,27 @@
   border-radius: 5px;
 }
 .card .text {
-  flex: 3;
+  flex: 2.8;
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: larger;
+
 }
 .button-action {
   flex: 1;
+}
+.btn-edit {
+  background-color: #00b201ff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  color: white;
+  margin-right: 10px
+}
+
+.btn-delete {
+  background-color: #ff0044;
+  padding: 8px 20px;
+  border-radius: 5px;
+  color: white;
+  
 }

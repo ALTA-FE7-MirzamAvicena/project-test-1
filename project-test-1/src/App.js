@@ -18,6 +18,7 @@ function App() {
   
   const handleChange = (e) => {
     setForm({
+      ...form,
       todo: e.target.value,
       status: false
     })
@@ -25,10 +26,21 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodoList([
+    if(form.index || form.index === 0) {
+      const newTodo = todoList.map((e, i) => {
+        if(i === form.index) {
+          return form
+        } else {
+          return e
+        }
+      })
+      setTodoList(newTodo)
+    }else {
+      setTodoList([
       ...todoList,
       form
-    ])
+      ])
+    }
     resetInput()
   }
 
@@ -44,6 +56,23 @@ function App() {
         }
       })
       setTodoList(newTodo)
+  }
+
+  const handleDelete = (index) => {
+    const newTodo = todoList.filter((e, i) => {
+      if(i !== index) {
+        return e
+      }
+    })
+    setTodoList(newTodo)
+  }
+
+  const handleEdit = (index) => {
+    const detailTodo = {
+      index,
+      ...todoList[index]
+    }
+    setForm(detailTodo)
   }
 
   return (
@@ -67,8 +96,8 @@ function App() {
                 {e.todo}
               </div>
               <div className='button-action'>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button className='btn-edit font-semibold' onClick={() => handleEdit(i)}>Edit</button>
+                <button className='btn-delete font-semibold' onClick={() => handleDelete(i)}>Delete</button>
               </div>
             </div>
             )
